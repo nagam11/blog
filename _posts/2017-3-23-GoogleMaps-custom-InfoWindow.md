@@ -74,29 +74,30 @@ override func viewDidLoad() {
  }
  ```
  
- If you run the app then you should probably see something like this. The app zooms in to London while using the zoom attribute from before(8).
- ![12]({{ site.baseurl }}/images/12.png)
+If you run the app then you should probably see something like this. The app zooms in to London while using the zoom attribute from before(8).
+![12]({{ site.baseurl }}/images/12.png)
  
  
- Next, we want to show an InfoWindow when the user clicks on the marker. To achieve this, we will use a **xib file**. In XCode create a new View file and name it CustomInfoWindow.
- ![13]({{ site.baseurl }}/images/13.png)
+Next, we want to show an InfoWindow when the user clicks on the marker. To achieve this, we will use a **xib file**. In XCode create a new View file and name it CustomInfoWindow.
+![13]({{ site.baseurl }}/images/13.png)
  
  
 In the xib file, click on the Attributes inspector and change the view's size to Freeform. Then change the Size of the view using the Size inspector and set width to 300 and height to 200. 
  
- ![14]({{ site.baseurl }}/images/14.png)
- ![14b]({{ site.baseurl }}/images/14b.png)
+![14]({{ site.baseurl }}/images/14.png)
+![14b]({{ site.baseurl }}/images/14b.png)
  
  
  To add some functionality we add a `UILabel` and a `UIButton` by dragging them. Your view should in the end look like this:
- ![15]({{ site.baseurl }}/images/15.png)
+![15]({{ site.baseurl }}/images/15.png)
  
 Now, we need to create a class for our custom InfoWindow. Create a new CocoaTouch file and name it **CustomInfoWindow**. This class should be a subclass of UIView. 
- ![16]({{ site.baseurl }}/images/16.png)
+![16]({{ site.baseurl }}/images/16.png)
  
  
 In order to connect the view to our file we have to set it as a class in the Identity Inspector of the view.
- ![17]({{ site.baseurl }}/images/17.png)
+![17]({{ site.baseurl }}/images/17.png)
+ 
  
 Run you app to ensure that everything is set up correctly. However, you still won't be able to see an InfoWindow.
 
@@ -145,6 +146,7 @@ In the end, your ViewController should look like this.
 
 
 Go ahead and run your app. If you click on a marker, you should see something like this. However, you will notice that you cannot press the button you have added. So why is that ?
+
 ![24]({{ site.baseurl }}/images/24.png)
 
 
@@ -203,6 +205,8 @@ func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
 In order for the InfoWindow to appear on top of the marker we have to fix the placement. In my case, I had to place to InfoWindow 140px higher. This variable depends however on your app and device.
 
 ---
+####Running
+
 In the end you should be able to run your app and have following functionality.
 ![26]({{ site.baseurl }}/images/CustomMarker.gif)
 
