@@ -7,7 +7,7 @@ Start off by creating a Single View Application in XCode.
 ![1]({{ site.baseurl }}/images/1.png)
 
 
-Name the application **GM-CustomInfoWindow-Button**. Don't forget to put the Organization identifier too.
+Name the application **GM-CustomInfoWindow-Button**. Don't forget to put the Organization Identifier too.
 ![2]({{ site.baseurl }}/images/2.png)
 
 
@@ -27,7 +27,7 @@ In order for you to work with GoogleMaps you need an **API Key**. If you are not
 Copy it and paste it into the list of bundle identifiers for you API key in the API Console.
 ![3]({{ site.baseurl }}/images/3.png)
 
-By doing this, you have registered your app for this specific API key. As next, you need to tell you app which API Key it has to use. So go to the `AppDelegate` class and `import GoogleMaps`. In the method `func application(_ application: UIApplication, didFinishLaunchingWithOptions:....)` replace the "YOUR-API-KEY" string with the API Key from the Console(shown below). 
+By doing this, you have registered your app for this specific API key. As next, you need to tell you app which API Key it has to use. So go to the `AppDelegate` class and `import GoogleMaps`. In the method `func application(_ application: UIApplication, didFinishLaunchingWithOptions:....)` replace the "YOUR-API-KEY" string with the API Key from the Console(shown below).
 ![6]({{ site.baseurl }}/images/6.png)
 
 
@@ -53,7 +53,7 @@ Now that we have linked the view, we have to set the delegate of the mapView to 
 ![10]({{ site.baseurl }}/images/10.png)
 
 
-Now go ahead and run your application. You should see something like this. If not, then make sure **you have not missed any of the steps** before and read the **error message** in the console. 
+Now go ahead and run your application. You should see something like this. If not, then make sure **you have not missed any of the steps** before and read the **error message** in the console.
 ![11]({{ site.baseurl }}/images/11.png)
 
 ---
@@ -64,52 +64,52 @@ override func viewDidLoad() {
  super.viewDidLoad()
  let camera = GMSCameraPosition.camera(withLatitude: 51.5287352, longitude: -0.3817818, zoom: 8)
  mapView.camera = camera
-        
+
  let marker = GMSMarker()
  marker.position = CLLocationCoordinate2D(latitude: 51.5287352, longitude: -0.3817818)
  marker.title = "My marker"
  marker.map = self.mapView
- 
+
  self.mapView.delegate = self
  }
  ```
- 
+
 If you run the app then you should probably see something like this. The app zooms in to London while using the zoom attribute from before(8).
 ![12]({{ site.baseurl }}/images/12.png)
- 
- 
+
+
 Next, we want to show an InfoWindow when the user clicks on the marker. To achieve this, we will use a **xib file**. In XCode create a new View file and name it CustomInfoWindow.
 ![13]({{ site.baseurl }}/images/13.png)
- 
- 
-In the xib file, click on the Attributes inspector and change the view's size to Freeform. Then change the Size of the view using the Size inspector and set width to 300 and height to 200. 
- 
+
+
+In the xib file, click on the Attributes inspector and change the view's size to Freeform. Then change the Size of the view using the Size inspector and set width to 300 and height to 200.
+
 ![14]({{ site.baseurl }}/images/14.png)
 ![14b]({{ site.baseurl }}/images/14b.png)
- 
- 
+
+
  To add some functionality we add a `UILabel` and a `UIButton` by dragging them. Your view should in the end look like this:
 ![15]({{ site.baseurl }}/images/15.png)
- 
-Now, we need to create a class for our custom InfoWindow. Create a new CocoaTouch file and name it **CustomInfoWindow**. This class should be a subclass of UIView. 
+
+Now, we need to create a class for our custom InfoWindow. Create a new CocoaTouch file and name it **CustomInfoWindow**. This class should be a subclass of UIView.
 ![16]({{ site.baseurl }}/images/16.png)
- 
- 
+
+
 In order to connect the view to our file we have to set it as a class in the Identity Inspector of the view.
 
 ![17]({{ site.baseurl }}/images/17.png)
- 
- 
+
+
 Run you app to ensure that everything is set up correctly. However, you still won't be able to see an InfoWindow.
 
  ---
 #### Presenting a simple InfoWindow
-Now we want to be able to show our InfoWindow. To do this, we firstly should be able to instantiate the xib file. In you `CustomInfoWindow` file add following code. 
+Now we want to be able to show our InfoWindow. To do this, we firstly should be able to instantiate the xib file. In you `CustomInfoWindow` file add following code.
 ```
 override init(frame: CGRect) {
  super.init(frame: frame)   
 }
-    
+
 required init?(coder aDecoder: NSCoder) {
  super.init(coder: aDecoder)
 }
@@ -136,7 +136,7 @@ As next, we have to implement two methods of the GMSMapDelegate; namely `didTap 
 func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
  return false
  }
- 
+
 func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
  return self.customInfoWindow
 }
@@ -151,7 +151,7 @@ Go ahead and run your app. If you click on a marker, you should see something li
 ![24]({{ site.baseurl }}/images/24.png)
 
 
-Now that's the main problem in using the InfoWindow functionality provided by GoogleMaps. The view is rendered as an **Image** and all elements in it **will not fire any events**. 
+Now that's the main problem in using the InfoWindow functionality provided by GoogleMaps. The view is rendered as an **Image** and all elements in it **will not fire any events**.
 ![25]({{ site.baseurl }}/images/25.png)
 
 ---
@@ -161,7 +161,7 @@ We want however, to be able to have a button in the InfoWindow and fire some eve
 So, we start by connecting the two elements(label and button) of the `CustomInfoWindow` (nib File) with the `CustomInfoWindow`(CocoaTouch class) by dragging them. Create one Outlet for the label and one action for the button. We want to change the text of the label on button click so we do something like this:
 ```
 @IBOutlet weak var customWindowLabel: UILabel!
-    
+
 @IBAction func press(_ sender: UIButton) {
  self.customWindowLabel.text = "You just pressed the button ! "
 }
@@ -188,7 +188,7 @@ Next, we implement the functionality in the method `didTap marker`. Add followin
 
 Firstly, we keep track of the marker by assigning it to our variable `tappedMarker`. Then, by using the position of the marker, we focus the camera on the tapped location. Next, we customize our `customInfoWindow` and add it as a subView of the `mapView`. In order to imitate the behaviour of the InfoWindow, we have to place it correctly on the map(above the marker) and dismiss it if we click another marker or on the map. So we implement two other methods.
 
-Firstly, we want to dismiss the window if we tap somewhere on the map. So we implement the method `mapView(_ mapView: GMSMapView, didTapAt coordinate`. 
+Firstly, we want to dismiss the window if we tap somewhere on the map. So we implement the method `mapView(_ mapView: GMSMapView, didTapAt coordinate`.
 ```
 func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
  customInfoWindow?.removeFromSuperview()
@@ -214,4 +214,4 @@ In the end you should be able to run your app and have following functionality.
 
 As next, you could pass data from the `ViewController` to the `View` and vice Versa by using the **Delegate pattern**. This tutorial just shows the basic functionality.
 
-You can find the complete code project [here](https://github.com/nagam11/GoogleMaps-CustomInfoWindow-Button). 
+You can find the complete code project [here](https://github.com/nagam11/GoogleMaps-CustomInfoWindow-Button).
