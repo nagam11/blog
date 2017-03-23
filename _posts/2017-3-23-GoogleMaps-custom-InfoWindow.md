@@ -96,6 +96,7 @@ Now, we need to create a class for our custom InfoWindow. Create a new CocoaTouc
  
  
 In order to connect the view to our file we have to set it as a class in the Identity Inspector of the view.
+
 ![17]({{ site.baseurl }}/images/17.png)
  
  
@@ -130,7 +131,7 @@ self.tappedMarker = GMSMarker()
 self.customInfoWindow = CustomInfoWindow().loadView()
 ```
 
-As next, we have to implement two methods of the GMSMapDelegate; namely `didTap marker` and `markerInfoWindow marker` in order to catch the tap events on markers and display an info window. Now you can add this to your ViewController file.
+As next, we have to implement two methods of the GMSMapDelegate; namely `didTap marker` and `markerInfoWindow marker` in order to catch the tap events on markers and display an info window. Now you can add this to your `ViewController` file.
 ```
 func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
  return false
@@ -205,7 +206,7 @@ func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
 In order for the InfoWindow to appear on top of the marker we have to fix the placement. In my case, I had to place to InfoWindow 140px higher. This variable depends however on your app and device.
 
 ---
-####Running
+#### Running
 
 In the end you should be able to run your app and have following functionality.
 ![26]({{ site.baseurl }}/images/CustomMarker.gif)
