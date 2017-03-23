@@ -19,6 +19,7 @@ Save the file in the main project directory and name it **Podfile**. Then in Ter
 
 
 
+
 In order for you to work with GoogleMaps you need an **API Key**. If you are not familiar then you should definitely have a look at [this page](https://developers.google.com/maps/documentation/ios-sdk/get-api-key). To use GoogleMaps you firstly need to register your application in the **API Console** in Google and then copy the API Key into the App. So, firstly navigate to the App's general settings by clicking on the App name on the Navigation area. In the tab "General", you will find you **Bundle Identifier.**
 ![4]({{ site.baseurl }}/images/4.png)
 
@@ -29,6 +30,7 @@ Copy it and paste it into the list of bundle identifiers for you API key in the 
 By doing this, you have registered your app for this specific API key. As next, you need to tell you app which API Key it has to use. So go to the `AppDelegate` class and `import GoogleMaps`. In the method `func application(_ application: UIApplication, didFinishLaunchingWithOptions:....)` replace the "YOUR-API-KEY" string with the API Key from the Console(shown below). 
 ![6]({{ site.baseurl }}/images/6.png)
 
+
 Next step is creating a **mapView**. Firstly, start by changing your `ViewController ` file. Start by importing  `import GoogleMaps ` and implementing the  `GMSMapDelegate `.
 ```
 import UIKit
@@ -37,13 +39,15 @@ class ViewController: UIViewController, GMSMapViewDelegate {
 }
 ```
 
-Now you have to connect you ViewController to the view in the Storyboard. Using the Assistant Editor, connect the view of the ViewController in the Storyboard with the ViewController file by creating an `IBOutlet` named mapView and change its type to GMSMapView.
-```@IBOutlet weak var mapView: GMSMapView!
+Now you have to connect you ViewController to the view in the Storyboard. Using the Assistant Editor, connect the view of the ViewController in the Storyboard with the ViewController file by creating an `IBOutlet` named mapView and change its type to `GMSMapView`.
+```
+@IBOutlet weak var mapView: GMSMapView!
 ```
 
 In your Storyboard, click the view which you linked and change its type in the Identity Inspector to GMSMapView.
 ![8]({{ site.baseurl }}/images/8.png)
 ![7]({{ site.baseurl }}/images/7.png)
+
 
 Now that we have linked the view, we have to set the delegate of the mapView to `self`. In the end, your ViewController class should look like this.
 ![10]({{ site.baseurl }}/images/10.png)
@@ -77,16 +81,19 @@ override func viewDidLoad() {
  Next, we want to show an InfoWindow when the user clicks on the marker. To achieve this, we will use a **xib file**. In XCode create a new View file and name it CustomInfoWindow.
  ![13]({{ site.baseurl }}/images/13.png)
  
- In the xib file, click on the Attributes inspector and change the view's size to Freeform. Then change the Size of the view using the Size inspector and set width to 300 and height to 200. 
+ 
+In the xib file, click on the Attributes inspector and change the view's size to Freeform. Then change the Size of the view using the Size inspector and set width to 300 and height to 200. 
  
  ![14]({{ site.baseurl }}/images/14.png)
  ![14b]({{ site.baseurl }}/images/14b.png)
+ 
  
  To add some functionality we add a `UILabel` and a `UIButton` by dragging them. Your view should in the end look like this:
  ![15]({{ site.baseurl }}/images/15.png)
  
 Now, we need to create a class for our custom InfoWindow. Create a new CocoaTouch file and name it **CustomInfoWindow**. This class should be a subclass of UIView. 
  ![16]({{ site.baseurl }}/images/16.png)
+ 
  
 In order to connect the view to our file we have to set it as a class in the Identity Inspector of the view.
  ![17]({{ site.baseurl }}/images/17.png)
@@ -136,8 +143,10 @@ func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIVie
 In the end, your ViewController should look like this.
 ![23]({{ site.baseurl }}/images/23.png)
 
+
 Go ahead and run your app. If you click on a marker, you should see something like this. However, you will notice that you cannot press the button you have added. So why is that ?
 ![24]({{ site.baseurl }}/images/24.png)
+
 
 Now that's the main problem in using the InfoWindow functionality provided by GoogleMaps. The view is rendered as an **Image** and all elements in it **will not fire any events**. 
 ![25]({{ site.baseurl }}/images/25.png)
@@ -156,6 +165,7 @@ So, we start by connecting the two elements(label and button) of the `CustomInfo
 ```
 ![18]({{ site.baseurl }}/images/18.png)
 
+
 Before proceeding, make sure your app still runs and that your classes look as follows. I have added another marker to test later the functionality.
 ![22]({{ site.baseurl }}/images/22.png)
 ![23]({{ site.baseurl }}/images/23.png)
@@ -171,6 +181,7 @@ func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIVie
 
 Next, we implement the functionality in the method `didTap marker`. Add following code to the method:
 ![26]({{ site.baseurl }}/images/26.png)
+
 
 Firstly, we keep track of the marker by assigning it to our variable `tappedMarker`. Then, by using the position of the marker, we focus the camera on the tapped location. Next, we customize our `customInfoWindow` and add it as a subView of the `mapView`. In order to imitate the behaviour of the InfoWindow, we have to place it correctly on the map(above the marker) and dismiss it if we click another marker or on the map. So we implement two other methods.
 
