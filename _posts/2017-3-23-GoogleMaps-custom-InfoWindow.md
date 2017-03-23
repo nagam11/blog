@@ -5,7 +5,7 @@ This tutorial is based on Kevin Hu's [idea](http://kevinxh.github.io/swift/custo
 
 #### Setting up a simple app with GoogleMaps
 Start off by creating a Single View Application in XCode.
-![1](https://github.com/nagam11/nagam11.github.io/blob/master/images/1.png)
+![1]({{ site.baseurl }}/images/1.png)
 
 
 Name the application GM-CustomInfoWindow-Button. Don't forget to put the Organization identifier too.
