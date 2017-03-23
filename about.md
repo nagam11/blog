@@ -4,5 +4,5 @@ title: About
 permalink: /about/
 ---
 
-![1]({{ site.baseurl }}/images/Citrus-300.png)
+![1]({{ site.baseurl }}/images/Citrus-100.png)
 some more lemon!
