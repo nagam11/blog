@@ -1,6 +1,6 @@
 
 ## Creating an interactive InfoWindow in Google Maps (Swift)
-This tutorial is based on Kevin Hu's [idea](http://kevinxh.github.io/swift/custom-and-interactive-googlemaps-ios-sdk-infowindow.html) on creating a custom InfoWindow for GoogleMaps.
+How to create an interactive InfoWIndow in Google Maps iOS (especially buttons).
 
 #### Setting up a simple app with GoogleMaps
 Start off by creating a Single View Application in XCode.
