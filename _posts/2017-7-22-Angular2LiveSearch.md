@@ -1,7 +1,7 @@
 ## Creating a LiveSearch in Angular2
 This tutorial shows how to create a LiveSearch functionality for Angular2. Another similar example of such a functionality 
-can also be found [here](http://plnkr.co/edit/TWt9Gdo6AdXa2ZMu9tt7?p=preview). What we will be building is following:
-![Angular2LiveSearch]({{ site.baseurl }}/images/Angular2LiveSearch.gif). Complete code can be found [here](https://github.com/nagam11/LiveSearchAngular2).
+can also be found [here](http://plnkr.co/edit/TWt9Gdo6AdXa2ZMu9tt7?p=preview). Complete code can be found [here](https://github.com/nagam11/LiveSearchAngular2). What we will be building is following:
+![Angular2LiveSearch]({{ site.baseurl }}/images/Angular2LiveSearch.gif).
 
 ### Setting up the Angular project
 To create the initial project we will use [Angular-CLI](https://github.com/angular/angular-cli). Follow the instructions and
@@ -16,7 +16,17 @@ For this project we will need following files:
 * Country.ts
 * countriesService.ts
 
-Go ahead and create the missing files in the folder app under src.
+Go ahead and create the missing files in the folder app under src. In the app.module.ts add following import
+```
+import {CountriesService} from './countriesService';
+```
+Next, add the CountriesService as a Provider in the app.module.ts.
+```
+...
+providers: [CountriesService],
+....
+```
+
 
 ### Creating UI
 Let's create an input field for searching with a placeholder. Now let's set a trigger upon input using the attribute input and 
@@ -86,3 +96,53 @@ button.btn:active { outline: 0; opacity: 0.6; color: #fff; -moz-box-shadow: none
 }
 ```
 We are then finished with UI.
+
+### Model
+Let's create a model for our contries. In the class Country put following code.
+```
+export class Country {
+  name: String;
+  capital: String;
+}
+```
+All countries have a name and capital. However, we won't be using the latter for this tutorial.
+
+### Controller
+Let's got to the app.component.ts and edit our controller. Firstly let's import our model and service.
+```
+import {Country} from './Country';
+import {CountriesService} from './countriesService';
+```
+Next edit the Component by adding the CountriesService as a provider in the controller.
+```
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  providers: [CountriesService],
+})
+```
+Now we start implementing the app logic. We declared two array in the UI called selectedCountries and countries so let's bind them to the controller/data model. We will declare two arrays with objects of type Country. What we also did declare, is the object item in the input field. What we want to achieve is to dynamically watch for changes in the input field and send requests using the typed message. One smart way to achieve this is using the **Observer pattern**. Here, we have an Object of type Observable which can be 'observed' in order to track changes and an Object of type Observer which 'observes' or 'subscribes' and acts upon seeing changes. In our case, we want the Object term to be an Observer and watch for changes from the results (which are retrieved from the server). To do this we use declare term as a [Subject](http://reactivex.io/documentation/subject.html) of type string.
+```
+import { Subject } from 'rxjs/subject';
+....
+countries: Array<Country>;
+selectedCountries: Array<Country> = [];
+term = new Subject<string>();
+```
+Now let's initialize our Controller with the parameter countriesService and subscribe to the result of the method search in the countries service. The return object is of type Observable.
+```
+constructor(private countriesService: CountriesService){
+ this.countriesService.search(this.term).subscribe(results => this.countries = results);
+}
+```
+### Service
+Now let's finally implement our data retrieval. Add following imports to your CountriesService.
+```
+import { Injectable }    from '@angular/core';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/delay';
+import {Observable} from 'rxjs/Observable';
+import "rxjs/Rx";
+```
