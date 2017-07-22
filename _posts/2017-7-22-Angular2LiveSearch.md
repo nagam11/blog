@@ -1,0 +1,88 @@
+## Creating a LiveSearch in Angular2
+This tutorial shows how to create a LiveSearch functionality for Angular2. Another similar example of such a functionality 
+can also be found [here](http://plnkr.co/edit/TWt9Gdo6AdXa2ZMu9tt7?p=preview). What we will be building is following:
+![Angular2LiveSearch]({{ site.baseurl }}/images/Angular2LiveSearch.gif). Complete code can be found [here](https://github.com/nagam11/LiveSearchAngular2).
+
+### Setting up the Angular project
+To create the initial project we will use [Angular-CLI](https://github.com/angular/angular-cli). Follow the instructions and
+create your LiveSearchAngular2 project. 
+
+### Creating files
+For this project we will need following files:
+* app.component.html
+* app.component.css
+* app.component.ts
+* app.module.ts
+* Country.ts
+* countriesService.ts
+
+Go ahead and create the missing files in the folder app under src.
+
+### Creating UI
+Let's create an input field for searching with a placeholder. Now let's set a trigger upon input using the attribute input and 
+bind it to a variable named term
+```
+<input class="form-control customInput" placeholder="Type to search for countries..." (input)="term.next($event.target.value)">
+```
+
+Next lets declare the buttons that will appear upon input as well as the buttons that will appear upon selection. For the first
+set of buttons we will use *ngFor to create all buttons dynamically from the array of countries and will use (click) to bind the click event to a method
+in the Controller. Finally we want to button to show the name of the country so we assign it as item.name.
+```
+ <div class="btn-toolbar">
+   <button class="btn customButton1" *ngFor="let item of countries" type="button" (click)="selectCountries(item)">
+      {{item.name}}
+    </button>
+ </div>
+```
+For the second list of buttons we will use the array of selectedCountries and assign another functions to the click event, namely
+deleting.
+```
+<div class="btn-toolbar">
+    <button *ngFor="let country of selectedCountries" class="btn customerButton2" type="button" (click)="deleteCountry(country)">
+      {{country.name}}
+    </button>
+/div>
+```
+You can arrange these UI elements as you wish. Second step to do is to change our app component CSS file. This step is optional and 
+can be skipped or changed. Following is an example code:
+```
+.customButton1{
+  margin: 5px;
+  background-color: #19b9e7;
+  border-color: #19b9e7;
+  border-radius: 300px;
+  color: white;
+  border-color: #19b9e7;
+  border: 0px solid;
+  font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+button.btn:hover { opacity: 0.6; color: #fff; }
+
+button.btn:active { outline: 0; opacity: 0.6; color: #fff; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
+
+.customInput{
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+  font-size: 15px;
+  color: #000;
+  height: 40px;
+  width: 300px;
+}
+
+.customerButton2{
+  margin: 5px;
+  background-color: #D3D3D3;
+  color: white;
+  border-color: white;
+  border: 1px solid;
+  font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+```
+We are then finished with UI.
