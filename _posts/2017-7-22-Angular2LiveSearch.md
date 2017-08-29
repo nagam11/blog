@@ -41,7 +41,7 @@ in the Controller. Finally we want to button to show the name of the country so 
 ```
  <div class="btn-toolbar">
    <button class="btn customButton1" *ngFor="let item of countries" type="button" (click)="selectCountries(item)">
-      {{item.name}}
+      {{ item.name }}
     </button>
  </div>
 ```
@@ -50,7 +50,7 @@ deleting.
 ```
 <div class="btn-toolbar">
     <button *ngFor="let country of selectedCountries" class="btn customerButton2" type="button" (click)="deleteCountry(country)">
-      {{country.name}}
+      {{ country.name }}
     </button>
 /div>
 ```
@@ -146,3 +146,50 @@ import 'rxjs/add/operator/delay';
 import {Observable} from 'rxjs/Observable';
 import "rxjs/Rx";
 ```
+Next we need to configure our request options. 
+```
+ private headers: Headers;
+  private url = 'https://restcountries.eu/rest/v2/name/';
+  options: RequestOptions;
+  constructor(private http: Http) {
+    this.headers = new Headers({ 'Content-Type': 'application/json' });
+    this.options = new RequestOptions({ headers: this.headers });
+  }
+```
+In the controller we have called the method search(this.term) on the countriesService. So let's now implement that.
+```
+ search(terms: Observable<string> ) {
+    return terms.debounceTime(300)
+      .distinctUntilChanged()
+      .switchMap(term => this.rawSearch(term));
+  }
+   rawSearch(terms: string) {
+    return this.http.get(this.url + terms).toPromise()
+      .then(this.extractDataGet)
+      .catch(this.handleError);
+  }
+ ```
+The method search initializes a new search every 300ms and calls the rawSearch method which performs a search by adding the entered string in the API call. The API will deliver a list of countries containing the searched string. Finally, we extract the returned data.
+```
+private extractDataGet(res: Response) {
+    let body = res.json();
+    return body;
+  }
+ ```
+ If you now, run the project you should be able to search and view a list of countries. However, when you click nothing happens at the moment.
+### Saving and deleting
+In the beggining of the tutorial, you have implemented two buttons in the app.component.html. These two buttons were bound via a click event to two method (saving and deleting. In the app.component.ts implement the method selectCountries which is responsible for selecting countries.
+ ```
+  selectCountries(item: Country) {
+    if ( this.selectedCountries.indexOf(item) == -1 ) {
+      this.selectedCountries.push(item);
+      }
+    }
+  ```
+If we have already added the country to the list of selected ones, then we don't want to add this country again. Otherwise we push it in the list. Next we want to be able to delete some countries we selected. So let's implement the method deleteCountry.
+ ```
+ deleteCountry(country: Country) {
+      this.selectedCountries = this.selectedCountries.filter(item => item !== country);
+  }
+  ```
+ Finally, you should be able to perform all actions and use the LiveSearch. Full code of this tutorial can be found [here](https://github.com/nagam11/LiveSearchAngular2).
