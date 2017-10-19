@@ -1,5 +1,3 @@
-
-## Creating an interactive InfoWindow in Google Maps (Swift)
 Google Maps iOS API does not support interactive InfoWindows. Following tutorial shows to implement this functionality by adding buttons to an InfoWindow.
 
 #### Setting up a simple app with GoogleMaps
