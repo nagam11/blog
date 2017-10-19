@@ -1,5 +1,3 @@
-## Creating a live weather Dashboard with ARKit
-
 So recently I stumbled upon [this](http://www.augment.com/blog/4-ways-augmented-reality-will-change-everyday-life/) image, which looks indeed pretty fancy. Since I had been experimenting with ARKit 
 for the last 2 months, I thought about recreating the weather display on the right-hand side. Maybe the To-do list on 
 the right is going to be next ;)
