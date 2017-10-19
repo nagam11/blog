@@ -24,9 +24,9 @@ include: in-door navigation in shopping malls, airports; visually enhanced tours
  citites are located. We could use this to display basic information about nearby locations. I created two mockups to show this
  interaction.
 
- ![InFlight-1]({{ site.baseurl }}/images/ InFlight-1.png)
+ ![InFlight-1]({{ site.baseurl }}/images/InFlight-1.png)
  
- ![InFlight-1]({{ site.baseurl }}/images/ InFlight-3.png)
+ ![InFlight-3]({{ site.baseurl }}/images/InFlight-3.png)
  
  The popups rise from the cities' current location and are pinned to it. Basic information is shown such as: the name, current weather,
  a few words about the city and the distance from the plane. Clicking on `Learn more` would show more detailled information about the city.
@@ -34,9 +34,9 @@ include: in-door navigation in shopping malls, airports; visually enhanced tours
  Other options that could be included here are: letting the user pin the city and read more even at a later point in time, 
  incorporate flight offers and prices to the detailled view, take pictures of the current view etc.
  
- ![InFlight-1]({{ site.baseurl }}/images/ InFlight-2.png)
+ ![InFlight-2]({{ site.baseurl }}/images/InFlight-2.png)
  
- ![InFlight-1]({{ site.baseurl }}/images/ InFlight-4.png)
+ ![InFlight-4]({{ site.baseurl }}/images/InFlight-4.png)
  
  ### How to create it?
 * We would need AR/VR glasses for the passengers or a phone and a cardboard to simulate VR.
