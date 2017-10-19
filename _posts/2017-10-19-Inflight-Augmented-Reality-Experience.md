@@ -14,9 +14,9 @@ is a great example of how AR could support the business in terms of interactive 
 include: in-door navigation in shopping malls, airports; visually enhanced tours in museums or showcasing products at home.
  
  
- ### In-flight Augmented Reality experience
- 
- Sitting in the airplane during long flights can be very boring. Airline companies try to enhance the in-flight customers' experience
+### In-flight Augmented Reality experience
+
+Sitting in the airplane during long flights can be very boring. Airline companies try to enhance the in-flight customers' experience
  by providing paper magazines, or entertainment/infotainment services. But how about using AR to make the flight less boring? 
  
  In my  visionary scenario, the user would use AR glasses to have a look at the current sky with live footage provided by the 
@@ -42,7 +42,7 @@ include: in-door navigation in shopping malls, airports; visually enhanced tours
  
  
  
- ###  How to create it?
+###  How to create it?
  
 * We would need AR/VR glasses for the passengers or a phone and a cardboard to simulate VR.
 * We would need to use data from the airplane such as exact current location, speed and camera footage.
