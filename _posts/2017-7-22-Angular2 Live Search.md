@@ -1,4 +1,3 @@
-## Creating a LiveSearch in Angular2
 This tutorial shows how to create a LiveSearch functionality for Angular2. Another similar example of such a functionality 
 can also be found [here](http://plnkr.co/edit/TWt9Gdo6AdXa2ZMu9tt7?p=preview). Complete code can be found [here](https://github.com/nagam11/LiveSearchAngular2). What we will be building is following:
 ![Angular2LiveSearch]({{ site.baseurl }}/images/Angular2LiveSearch.gif).
