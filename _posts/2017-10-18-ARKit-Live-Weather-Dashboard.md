@@ -1,6 +1,6 @@
 So recently I stumbled upon [this](http://www.augment.com/blog/4-ways-augmented-reality-will-change-everyday-life/) image, which looks indeed pretty fancy. Since I had been experimenting with ARKit 
 for the last 2 months, I thought about recreating the weather display on the right-hand side. Maybe the To-do list on 
-the right is going to be next ;)
+the right is going to be next ;) The final project can be found [here](https://github.com/nagam11/ARKit-Projects/tree/master/Project%2002%20-%20ARFlatWeather).
 
 The final result looks like this.
 [![FlatWeatherARKit]({{ site.baseurl }}/images/FlatWeather.png)](https://www.youtube.com/watch?v=iuSspC7fXGY "Watch the video")
