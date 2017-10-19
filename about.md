@@ -4,5 +4,5 @@ title: About
 permalink: /about/
 ---
 
-![1]({{ site.baseurl }}/images/Citrus-100.png)
-some more lemon!
+I am a graduate student at the faculty of Computer Science of the Technical University of Munich. I am particularly passionate
+about Software Engineering, HCI and AR/VR technologies.  
