@@ -15,11 +15,10 @@ include: in-door navigation in shopping malls, airports; visually enhanced tours
  
  
 ### In-flight Augmented Reality experience
-Sitting in the airplane during long flights can be very boring. Airline companies try to enhance the in-flight customers' experience
- by providing paper magazines, or entertainment/infotainment services. But how about using AR to make the flight less boring? 
+Long airplane flights can be, despite airlines' efforts to enhance the in-flight customers' experience by providing paper magazines, or entertainment/infotainment services, very boring. How about using AR to make the flight more fun? 
  
- In my  visionary scenario, the user would use AR glasses to have a look at the current sky with live footage provided by the 
- cameras placed on the airplane (something that already exists nowadays). Another option would be to use the view from the window,
+ In a future visionary scenario, the user would use AR glasses to have a look at the current sky with live footage provided by the 
+ cameras placed on the airplane (something that already exists nowadays). Another option would be to use the plane's window view,
  which is however very restricted and not available to all passengers. On another note, there is not much to understand from the sky
  from such a high point of view. That is when Augmented Reality comes into play. Using the plane's current position we know where different 
  citites are located. We could use this to display basic information about nearby locations. I created two mockups to show this
