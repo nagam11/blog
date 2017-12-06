@@ -1,5 +1,7 @@
 [Setting](#setting)
+
 [Walkthrough](#walkthrough)
+
 [Measurements](#measurements)
 
 Recently, I finished an ARKit project featuring some of the elements of the Solar System (namely: the Sun, Earth and the Moon). 
