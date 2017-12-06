@@ -1,4 +1,4 @@
-Recently, I finished an ARKit project featuring some of the elements of the Solar System (namely: the Sun, Earth and the Moon). 
+Recently, I finished an ARKit project featuring some elements of the the Solar System (namely: the Sun, Earth and the Moon). 
 While the ARKit part on itself was not significantly difficult, working with SCNVector3's and understanding the composition
 of all the elements was a bit more challenging than I thought. Hence, I wanted to share some key learnings as well as technical
 details 
@@ -17,7 +17,8 @@ with a certain speed. Morever, the Moon orbits and Earth and the Earth (and its 
 we can implement the nodes using SCNNodes(3D Nodes) from SceneKit. Rotating the nodes can be implemented using
 SCNActions. To place SCNNodes in the 3D space, we need to address the space by using SCNVector3's, which are representations 
 of three-component vectors. SceneKit uses [three-component vectors](https://developer.apple.com/documentation/scenekit/scnvector3) 
-for a variety of purposes, such as describing node or vertex positions, surface normals, and scale or translation transforms. 
+for a variety of purposes, such as describing node or vertex positions, surface normals, and scale or translation transforms.
+The remainder of this post is a walkthrough of the code in the project as well as an overview of the measurements I used in the app. 
 >  **Note:** Below, I use the terms nodes and systems as synonyms. That it because all systems and all standalone astronomical objects are implemented as nodes. I use the term system when either multiple nodes are child nodes of a specific parent or when the node itself is performing more than one rotation with a different reference point (or axis). 
 
 ### Walkthrough 
