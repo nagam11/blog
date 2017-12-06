@@ -1,15 +1,15 @@
-[Setting](#setting)
-
-[Walkthrough](#walkthrough)
-
-[Measurements](#measurements)
-
 Recently, I finished an ARKit project featuring some of the elements of the Solar System (namely: the Sun, Earth and the Moon). 
 While the ARKit part on itself was not significantly difficult, working with SCNVector3's and understanding the composition
 of all the elements was a bit more challenging than I thought. Hence, I wanted to share some key learnings as well as technical
 details 
 of the implementation. One major topic addressed here was: Rotating nodes around the x/y/z axis and around 
 other nodes or points of reference.
+
+[Setting](#setting)
+
+[Walkthrough](#walkthrough)
+
+[Measurements](#measurements)
 
 ### Setting
 We want to implement three nodes: the Sun, the Earth and the Moon. Each of these nodes rotates around the y axis (vertical axis)
