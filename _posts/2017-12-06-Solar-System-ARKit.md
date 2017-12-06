@@ -1,3 +1,7 @@
+[Setting](#setting)
+[Walkthrough](#walkthrough)
+[Measurements](#measurements)
+
 Recently, I finished an ARKit project featuring some of the elements of the Solar System (namely: the Sun, Earth and the Moon). 
 While the ARKit part on itself was not significantly difficult, working with SCNVector3's and understanding the composition
 of all the elements was a bit more challenging than I thought. Hence, I wanted to share some key learnings as well as technical
@@ -79,3 +83,33 @@ Finally, we can rotate the Moon-Rotation system as a whole.
 self.rotateObject(node: moonRotationNode, duration: rotation_speeds[2], from: SCNVector4Make(0, 1, 0, 0), to: SCNVector4Make(0, 1, 0, Float(Double.pi) * 2.0), key: "moon_earth_rotation")
 ```
 ![11]({{ site.baseurl}}/images/s_11.gif)
+ 
+## Measurements
+### Orbits durations
+
+| Name          | Nominal Duration(days)   | App fast duration (sec)  | App slow duration (sec)
+| ------------- |:-------------:| -----:| -----:|
+| Orbit: Moon -> Earth   | 27 days | 2 | 54| 
+| Orbit: Earth -> Sun      | 365 days      |   27 |730|
+| Moon -> Moon      |  27 days | 2 | 54 |
+| Earth -> Earth      |   1 day |0.07| 2 |
+| Sun -> Sun      |  25 days |1.8| 50 |
+
+**Result**: Implemented both simulation speeds. Users can click on any node to change the speed of the whole system, which is proportional to the real speed.
+
+### Distance 
+| Name          | Distance(km) | Distance in App(cm)
+| ------------- |:-------------:| -----:|
+| Earth-Sun   | 150 * 10^6 | 3902 (39m) 
+| Earth-Moon   | 384,400 | 10  
+
+**Result**: Proportional distance does not 'work'. Either the Sun will be very very far away and thus not in the field of vision or the Earth and the Moon will 'collide'(very very small distance). I am using a 'reasonable' distance so that all elements are visible but it does not reflect the real distance.
+
+### Size(Radius)
+| Name          | Radius(km)   | Radius in App(m) big | Radius in App(m) small
+| ------------- |:-------------:| -----:| -----:|
+| Earth   | 6371 | 0.03 | 0.00915| 
+| Sun      | 695,700     |   3.27 |1|
+| Moon    |  1737 | 0.008 | 00.25 |
+
+**Result**: Proportional size does not 'work'. Either the Sun will be very big or the Earth system will be very small. I am using a 'reasonable' size/radius so that all elements are visible but it does not reflect the real size.
