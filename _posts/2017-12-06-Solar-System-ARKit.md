@@ -101,6 +101,7 @@ self.rotateObject(node: moonRotationNode, duration: rotation_speeds[2], from: SC
 **Result**: Implemented both simulation speeds. Users can click on any node to change the speed of the whole system, which is proportional to the real speed.
 
 ### Distance 
+
 | Name          | Distance(km) | Distance in App(cm)|
 | ------------- |:-------------:| -----:|
 | Earth-Sun   | 150 * 10^6 | 3902 (39m) |
@@ -110,6 +111,7 @@ self.rotateObject(node: moonRotationNode, duration: rotation_speeds[2], from: SC
 **Result**: Proportional distance does not 'work'. Either the Sun will be very very far away and thus not in the field of vision or the Earth and the Moon will 'collide'(very very small distance). I am using a 'reasonable' distance so that all elements are visible but it does not reflect the real distance.
 
 ### Size(Radius)
+
 | Name          | Radius(km)   | Radius in App(m) big | Radius in App(m) small|
 | ------------- |:-------------:| -----:| -----:|
 | Earth   | 6371 | 0.03 | 0.00915| 
