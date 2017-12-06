@@ -59,7 +59,8 @@ self.rotateObject(node: moonNode, duration: rotation_speeds[1], from: SCNVector4
 
 ---
 
-Now, here's the tricky part. At the moment, the Moon-Rotation system is not related to other systems and its absolute and relative origin is (0,0,0). What we want to achieve, is having the whole system have an absolute origin(in regard to real world coordinates) at the coordinate (0,0,-0.7). That is where our Earth-Moon System has its own origin. **Therefore, we want to align both systems at this coordinate so that they can overlap. **
+Now, here's the tricky part. At the moment, the Moon-Rotation system is not related to other systems and its absolute and relative origin is (0,0,0). What we want to achieve, is having the whole system have an absolute origin(in regard to real world coordinates) at the coordinate (0,0,-0.7). That is where our Earth-Moon System has its own origin. 
+**Therefore, we want to align both systems at this coordinate so that they can overlap.**
 
 ![7]({{ site.baseurl}}/images/s_7.gif)
 ```
